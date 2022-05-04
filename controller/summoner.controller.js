@@ -9,10 +9,10 @@ exports.summonerByName = async () => {
         throw error
     }
 }
-
-exports.getTier = async () =>{
+// 6H89cDX0ha-eJaAmdxFGgrVbYquOl-uIMUDHXEdD0G3diQ
+exports.getTier = async (id) =>{
     try {
-        const { data } = await api.get(`/league/v4/entries/by-summoner/6H89cDX0ha-eJaAmdxFGgrVbYquOl-uIMUDHXEdD0G3diQ`);
+        const { data } = await api.get(`/league/v4/entries/by-summoner/${id}`);
         const [soloq, flex] = data;
         return soloq;
     } catch (error) {
