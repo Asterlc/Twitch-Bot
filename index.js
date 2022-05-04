@@ -17,12 +17,6 @@ const client = new tmi.Client({
 
 client.connect();
 client.on('message', (channel, tags, message, self) => {
-    // console.log(`${tags['display-name']}: ${message}`);
-    // console.log('tags', JSON.stringify(tags, null, 4));
-    // console.log('channel', JSON.stringify(channel, null, 4));
-    // console.log('message', JSON.stringify(message, null, 4));
-    // console.log('self', JSON.stringify(self, null, 4));
-
     if (self) return;
 
     switch (message.toLowerCase()) {
@@ -41,23 +35,4 @@ client.on('message', (channel, tags, message, self) => {
         default:
             break;
     }
-
-    // if (message.toLowerCase() === '!hello') {
-    //     setTimeout(() => {
-    //         return client.say(channel, `@${tags.username}, Hello World !`);
-
-    //     }, 1500);
-    // }
-    // if (message.toLowerCase() === '@signislc') {
-    //     setTimeout(() => {
-    //         return client.say(channel, `@${tags.username}, que foi ?`);
-
-    //     }, 1500);
-    // }
-    // if (message.toLowerCase() === '!elo') {
-    //     setTimeout(() => {
-    //         return client.say(channel, `Madeira IV`);
-
-    //     }, 1500);
-    // }
 });
