@@ -1,5 +1,5 @@
 "use strict";
-const api = require('../src/api/api');
+const api = require('../api/api');
 
 exports.summonerByName = async (name) => {
     try {

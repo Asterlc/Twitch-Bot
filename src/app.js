@@ -1,6 +1,6 @@
 "use strict";
 require('dotenv').config();
-const { summonerByName, getTier } = require('./../controller/summoner.controller');
+const { summonerByName, getTier } = require('./controller/summoner.controller');
 const tmi = require('tmi.js');
 const api = require('./api/api');
 
