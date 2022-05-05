@@ -23,13 +23,13 @@ client.on('message', (channel, tags, message, self) => {
     const args = message.slice(1).split(' ');
     let [command, ...name] = args;
     command = "!" + args.shift().toLowerCase();
-    console.log('name:>>', ...name)
+
     if (command.toLowerCase() === '!summoner') {
-        summonerByName(name)
+        summonerByName(...name)
             .then(summonerID => summonerID)
             .then(async (param) => {
                 const { tier, rank, leaguePoints } = await getTier(param);
-                client.say(channel, `${tier} ${rank} PDL: ${leaguePoints}`);
+                client.say(channel, `Elo: ${tier.toLowerCase()} ${rank} PDL: ${leaguePoints}`);
             })
             .catch(error => {
                 // console.log(JSON.stringify(error.data));
