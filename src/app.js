@@ -33,7 +33,6 @@ client.on('message', (channel, tags, message, self) => {
                 client.say(channel, `Elo: ${tier.toLowerCase()} ${rank} PDL: ${leaguePoints}`);
             })
             .catch(error => {
-                // console.log(JSON.stringify(error.data));
                 client.say(channel, `Ops, não encontrei esse ai não.`);
             })
     }
