@@ -1,4 +1,4 @@
-# Twitch-Bot
+# Twitch-Bot-LoL
 
 > Tecnologias: Axios, dotenv, tmi.js
 
