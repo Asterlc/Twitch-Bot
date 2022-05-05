@@ -1,3 +1,4 @@
+"use strict";
 require('dotenv').config();
 const { summonerByName, getTier } = require('./../controller/summoner.controller');
 const tmi = require('tmi.js');
@@ -23,9 +24,9 @@ client.on('message', (channel, tags, message, self) => {
     const args = message.slice(1).split(' ');
     let [command, ...name] = args;
     command = "!" + args.shift().toLowerCase();
-
+    
     if (command.toLowerCase() === '!summoner') {
-        summonerByName(...name)
+        summonerByName(name)
             .then(summonerID => summonerID)
             .then(async (param) => {
                 const { tier, rank, leaguePoints } = await getTier(param);

@@ -2,10 +2,12 @@ require('dotenv').config();
 const axios = require('axios').default;
 
 const api = axios.create({
-    baseURL: 'https://br1.api.riotgames.com/lol/',
-    headers: { "X-Riot-Token": `${process.env.RIOT_KEY}` }
+    baseURL: `${process.env.RIOT_URL}`,
+    headers: {
+        "X-Riot-Token": `${process.env.RIOT_KEY}`,
+        "content-type": "charset=utf-8"
+    }
+
 });
 
 module.exports = api;
-
-//https://br1.api.riotgames.com/lol/
