@@ -21,36 +21,23 @@ client.on('message', (channel, tags, message, self) => {
     if (self || !message.startsWith('!')) return;
 
     const args = message.slice(1).split(' ');
-    const command = "!" + args.shift().toLowerCase();
-
-    if (message.toLowerCase() === '!summoner') {
-        summonerByName()
+    let [command, ...name] = args;
+    command = "!" + args.shift().toLowerCase();
+    console.log('name:>>', ...name)
+    if (command.toLowerCase() === '!summoner') {
+        summonerByName(name)
             .then(summonerID => summonerID)
-            .then(async param => {
+            .then(async (param) => {
                 const { tier, rank, leaguePoints } = await getTier(param);
                 client.say(channel, `${tier} ${rank} PDL: ${leaguePoints}`);
             })
-            .catch(error => console.log(error));
+            .catch(error => {
+                // console.log(JSON.stringify(error.data));
+                client.say(channel, `Ops, não encontrei esse ai não.`);
+            })
+    }
 
-        // async function summonerByName() {
-        //     try {
-        //         const { data } = await api.get(`/summoner/v4/summoners/by-name/Signis`);
-        //         const { id } = data;
-        //         return id;
-        //     } catch (error) {
-        //         throw error;
-        //     }
-        // }
-
-        // async function getTier() {
-        //     try {
-        //         const { data } = await api.get(`/league/v4/entries/by-summoner/6H89cDX0ha-eJaAmdxFGgrVbYquOl-uIMUDHXEdD0G3diQ`);
-        //         const [soloq, flex] = data;
-        //         return soloq;
-        //     } catch (error) {
-        //         throw error;
-        //     }
-        // }
-        // client.say(channel, `@${tags.username}, usando api!`);
+    if (message.toLowerCase() === '!hello') {
+        client.say(channel, `Hello World!`);
     }
 });
