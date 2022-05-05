@@ -1,7 +1,8 @@
 # Twitch-Bot
 
-> Conhecendo a biblioteca tmi.js.
-> Bot simples que capta alguns comandos mockados no chat
+> Tecnologias: Axios, dotenv, tmi.js
 
-+ Necessário autenticação OAuth da Twitch chat: https://twitchapps.com/tmi/
-+ Em desenvolvimento, ainda há algumas funcionalidades pensadas que preciso desenvolver.
+ + Este bot terá o nome e login da conta na qual será utilizado.
+ + Este bot realiza buscas com API da Riot Games disponbilizada para desenvolvedores.
+ + As consultas trazem o  tier do jogador e sua respectiva divisão, junto com seus pontos de liga.
+ + As consultas só trazem informações no servidor BR, até o presente momento.
