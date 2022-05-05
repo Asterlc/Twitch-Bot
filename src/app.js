@@ -28,11 +28,13 @@ client.on('message', (channel, tags, message, self) => {
     if (command.toLowerCase() === '!summoner') {
         summonerByName(name)
             .then(summonerID => summonerID)
-            .then(async (param) => {
-                const { tier, rank, leaguePoints } = await getTier(param);
-                client.say(channel, `Elo: ${tier.toLowerCase()} ${rank} PDL: ${leaguePoints}`);
+            .then(async (id) => {
+                let { tier, rank, leaguePoints } = await getTier(id);
+                tier = tier.toLowerCase();
+                client.say(channel, `Tier: ${tier[0].toUpperCase()}${tier.slice(1)} ${rank} - PDL: ${leaguePoints}`);
             })
             .catch(error => {
+                console.log('error:>>', error)
                 client.say(channel, `Ops, não encontrei esse ai não.`);
             })
     }
